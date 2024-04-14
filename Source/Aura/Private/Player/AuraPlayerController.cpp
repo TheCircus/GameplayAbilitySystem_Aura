@@ -39,7 +39,7 @@ void AAuraPlayerController::CursorTrace()
 	 * D. Both actors are valid, but LastActor != ThisActor
 	 *		- UnHighlight LastActor, and Highlight ThisActor
 	 * E. Both actors are valid, and are the same actor
-	 *		- Do thing
+	 *		- Do nothing
 	 */
 
 	if (LastActor == nullptr)
