@@ -2,7 +2,6 @@
 
 
 #include "AbilitySystem/Abilities/AuraProjectileSpell.h"
-
 #include "Actor/AuraProjectile.h"
 #include "Interaction/CombatInterface.h"
 
