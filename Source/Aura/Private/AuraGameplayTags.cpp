@@ -1,7 +1,7 @@
 // Copyright JonBoy
 
 
-#include "AuraGamepayTags.h"
+#include "AuraGameplayTags.h"
 #include "GameplayTagsManager.h"
 
 FAuraGameplayTags FAuraGameplayTags::GameplayTags;

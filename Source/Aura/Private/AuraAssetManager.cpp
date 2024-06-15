@@ -2,7 +2,7 @@
 
 
 #include "AuraAssetManager.h"
-#include "AuraGamepayTags.h"
+#include "AuraGameplayTags.h"
 
 UAuraAssetManager& UAuraAssetManager::Get()
 {
