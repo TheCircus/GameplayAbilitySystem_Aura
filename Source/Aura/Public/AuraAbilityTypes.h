@@ -10,11 +10,11 @@ struct FAuraGameplayEffectContext : public FGameplayEffectContext
 
 public:
 
-	bool IsBlockedHit() const { return bIsBlockedHit; }
 	bool IsCriticalHit() const { return bIsCriticalHit; }
+	bool IsBlockedHit() const { return bIsBlockedHit; }
 
-	void SetIsBlockedHit(bool bInIsCriticalHit) { bIsCriticalHit = bInIsCriticalHit; }
-	void SetIsCriticalHit(bool bInIsBlockedHit) { bIsBlockedHit = bInIsBlockedHit; }
+	void SetIsCriticalHit(bool bInIsCriticalHit) { bIsCriticalHit = bInIsCriticalHit; }
+	void SetIsBlockedHit(bool bInIsBlockedHit) { bIsBlockedHit = bInIsBlockedHit; }
 	
 	/** Returns the actual struct used for serialization, subclasses must override this! */
 	virtual UScriptStruct* GetScriptStruct() const
