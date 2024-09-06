@@ -3,7 +3,6 @@
 #include "GameplayEffectTypes.h"
 #include "AuraAbilityTypes.generated.h"
 
-
 class UGameplayEffect;
 
 USTRUCT(BlueprintType)
@@ -21,7 +20,7 @@ struct FDamageEffectParams
 
 	UPROPERTY()
 	TObjectPtr<UAbilitySystemComponent> SourceAbilitySystemComponent;
-	
+
 	UPROPERTY()
 	TObjectPtr<UAbilitySystemComponent> TargetAbilitySystemComponent;
 
@@ -55,7 +54,7 @@ struct FAuraGameplayEffectContext : public FGameplayEffectContext
 public:
 
 	bool IsCriticalHit() const { return bIsCriticalHit; }
-	bool IsBlockedHit() const { return bIsBlockedHit; }
+	bool IsBlockedHit () const { return bIsBlockedHit; }
 	bool IsSuccessfulDebuff() const { return bIsSuccessfulDebuff; }
 	float GetDebuffDamage() const { return DebuffDamage; }
 	float GetDebuffDuration() const { return DebuffDuration; }
@@ -66,19 +65,20 @@ public:
 	void SetIsBlockedHit(bool bInIsBlockedHit) { bIsBlockedHit = bInIsBlockedHit; }
 	void SetIsSuccessfulDebuff(bool bInIsDebuff) { bIsSuccessfulDebuff = bInIsDebuff; }
 	void SetDebuffDamage(float InDamage) { DebuffDamage = InDamage; }
-	void SetDebuffDuration(float InDuration) { DebuffDamage = InDuration; }
-	void SetDebuffFrequency(float InFrequency) { DebuffDamage = InFrequency; }
+	void SetDebuffDuration(float InDuration) { DebuffDuration = InDuration; }
+	void SetDebuffFrequency(float InFrequency) { DebuffFrequency = InFrequency; }
+	void SetDamageType(TSharedPtr<FGameplayTag> InDamageType) { DamageType = InDamageType; }
 	
 	/** Returns the actual struct used for serialization, subclasses must override this! */
 	virtual UScriptStruct* GetScriptStruct() const
 	{
-		return StaticStruct();
+		return FGameplayEffectContext::StaticStruct();
 	}
 
 	/** Creates a copy of this context, used to duplicate for later modifications */
-	virtual FAuraGameplayEffectContext* Duplicate() const
+	virtual FGameplayEffectContext* Duplicate() const
 	{
-		FAuraGameplayEffectContext* NewContext = new FAuraGameplayEffectContext();
+		FGameplayEffectContext* NewContext = new FGameplayEffectContext();
 		*NewContext = *this;
 		if (GetHitResult())
 		{
@@ -87,18 +87,18 @@ public:
 		}
 		return NewContext;
 	}
-	
+
 	/** Custom serialization, subclasses must override this */
 	virtual bool NetSerialize(FArchive& Ar, class UPackageMap* Map, bool& bOutSuccess);
 	
 protected:
-		
+
 	UPROPERTY()
 	bool bIsBlockedHit = false;
 	
 	UPROPERTY()
 	bool bIsCriticalHit = false;
-		
+
 	UPROPERTY()
 	bool bIsSuccessfulDebuff = false;
 
@@ -112,11 +112,10 @@ protected:
 	float DebuffFrequency = 0.f;
 
 	TSharedPtr<FGameplayTag> DamageType;
-	
 };
 
 template<>
-struct  TStructOpsTypeTraits<FAuraGameplayEffectContext> : public TStructOpsTypeTraitsBase2<FAuraGameplayEffectContext>
+struct TStructOpsTypeTraits<FAuraGameplayEffectContext> : public TStructOpsTypeTraitsBase2<FAuraGameplayEffectContext>
 {
 	enum
 	{
