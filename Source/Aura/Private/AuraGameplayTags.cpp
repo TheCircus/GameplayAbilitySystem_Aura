@@ -295,11 +295,38 @@ void FAuraGameplayTags::InitializeNativeGameplayTags()
 	FString("Electrocute Ability Tag")
 	);
 				
+	/*
+	 * Passive Spells
+	*/
+					
+	GameplayTags.Abilities_Passive_HaloOfProtection = UGameplayTagsManager::Get().AddNativeGameplayTag(
+	FName("Abilities.Passive.HaloOfProtection"),
+	FString("Halo Of Protection Passive Ability Tag")
+	);
+							
+	GameplayTags.Abilities_Passive_LifeSiphon = UGameplayTagsManager::Get().AddNativeGameplayTag(
+	FName("Abilities.Passive.LifeSiphon"),
+	FString("Life Siphon Passive Ability Tag")
+	);
+							
+	GameplayTags.Abilities_Passive_ManaSiphon = UGameplayTagsManager::Get().AddNativeGameplayTag(
+	FName("Abilities.Passive.ManaSiphon"),
+	FString("Mana Siphon Passive Ability Tag")
+	);
+	
+	/*
+	 * Other Abilities
+	*/
+	
 	GameplayTags.Abilities_HitReact = UGameplayTagsManager::Get().AddNativeGameplayTag(
 	FName("Abilities.HitReact"),
 	FString("HitReact Ability Tag")
 	);
-						
+	
+	/*
+	 * Statuses
+	*/
+	
 	GameplayTags.Abilities_Status_Eligible = UGameplayTagsManager::Get().AddNativeGameplayTag(
 	FName("Abilities.Status.Eligible"),
 	FString("Eligible Status")
